@@ -10,19 +10,21 @@ public class Player {
     private double x;
     private double y;
     private int r;
+    private int d;
 
     private Color color;
 
     public Player(){
-        x = 200;
-        y = 200;
-        r = 100;
+        x = 0;
+        y = 0;
+        r = 20;
+        d = r * 2;
         color = Color.green;
     }
 
     public void draw(Graphics2D graphics2D){
         graphics2D.setColor(color);
-        graphics2D.fillOval((int)0,(int)0,GamePanel.WIDTH,GamePanel.HEIGHT);
+        graphics2D.fillOval((int)x - r,(int)y - r,d,d);
     }
 
 }
