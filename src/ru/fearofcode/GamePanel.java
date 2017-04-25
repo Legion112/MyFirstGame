@@ -29,6 +29,8 @@ public class GamePanel extends JPanel implements Runnable{
 
     Background background;
 
+    Player player;
+
 
     public GamePanel(){
         setPreferredSize(new Dimension(HEIGHT,WIDTH));
@@ -37,6 +39,8 @@ public class GamePanel extends JPanel implements Runnable{
         graphics2D.setRenderingHints(new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON));
 
         background = new Background();
+        player = new Player();
+
     }
     public void start(){
         threadGame = new Thread(this, "game");
@@ -46,7 +50,7 @@ public class GamePanel extends JPanel implements Runnable{
     @Override
     public void run(){
 
-
+        //TODO run Game
         while(true) {
 
 
@@ -62,6 +66,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     private void render(){
         background.draw(graphics2D);
+        player.draw(graphics2D);
     }
 
     private void draw(){
