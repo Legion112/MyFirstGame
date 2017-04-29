@@ -41,6 +41,8 @@ public class GamePanel extends JPanel implements Runnable{
         background = new Background();
         player = new Player();
 
+        addKeyListener(new Listener());
+
     }
     public void start(){
         threadGame = new Thread(this, "game");
