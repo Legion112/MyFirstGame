@@ -35,7 +35,6 @@ public class Listener implements KeyListener{
         if (e.getKeyCode() == KeyEvent.VK_A) {
             keyRight = true;
         }
-        System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 
 
@@ -53,7 +52,5 @@ public class Listener implements KeyListener{
         if (e.getKeyCode() == KeyEvent.VK_A) {
             keyRight = false;
         }
-        System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
-
     }
 }

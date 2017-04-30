@@ -12,6 +12,8 @@ class Player {
     private double speed;
     private double spdV;
     private double spdH;
+    public static double sin45 = Math.sin(Math.toRadians(45));
+    public static double cos45 = Math.cos(Math.toRadians(45));
     private double x;
     private double y;
     private int r;
@@ -21,13 +23,13 @@ class Player {
 
     public Player(){
 
-        x = 0;
-        y = 0;
+        x = 250;
+        y = 250;
         r = 20;
         d = r * 2;
         color = Color.green;
 
-        speed = 10;
+        speed = 5;
         spdV = 0;
         spdH = 0;
     }
@@ -35,18 +37,39 @@ class Player {
     public void update(){
 
 
-        if(Listener.keyUp ){
-            y -= speed;
+        if (Listener.keyUp) {
+            spdV = -speed;
         }
-        if (Listener.keyDown) {
-            y += speed;
+        if (Listener.keyDown){
+            spdV = speed;
         }
         if (Listener.keyLeft) {
-            x += speed;
+            spdH = speed;
         }
         if (Listener.keyRight) {
-            x -= speed;
+            spdH = -speed;
         }
+        if(Listener.keyUp && Listener.keyLeft) {
+            spdH = speed * cos45;
+            spdV = -(speed * sin45);
+        }
+        if (Listener.keyUp && Listener.keyRight) {
+            spdH = -(speed * cos45);
+            spdV = -(speed * sin45);
+        }
+        if (Listener.keyDown && Listener.keyLeft) {
+            spdH = (speed * cos45);
+            spdV = (speed * sin45);
+        }
+        if (Listener.keyDown && Listener.keyRight) {
+            spdH = -(speed * cos45);
+            spdV = (speed * sin45);
+        }
+
+        y += spdV;
+        x += spdH;
+        spdH = 0;
+        spdV = 0;
     }
 
     public void draw(Graphics2D graphics2D){
