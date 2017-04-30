@@ -17,12 +17,10 @@ import java.awt.RenderingHints;
 public class GamePanel extends JPanel implements Runnable{
     static int HEIGHT = 500;
     static int WIDTH = 500;
+    static int speadRoom = 60;
+    final static long STEPTIME = 1_000 / speadRoom;
 
     Thread threadGame;
-    private int FPS = 60;
-    private int timerFPS = 0;
-
-
 
     BufferedImage image;
     Graphics2D graphics2D;
@@ -43,7 +41,7 @@ public class GamePanel extends JPanel implements Runnable{
         background = new Background();
         player = new Player();
 
-        //addKeyListener(new Listener());
+        addKeyListener(new Listener());
     }
     public void start(){
         threadGame = new Thread(this, "game");
@@ -52,14 +50,22 @@ public class GamePanel extends JPanel implements Runnable{
 
     @Override
     public void run(){
-
-        //TODO run Game
+        /*
+         This cycle do speed the game.
+         */
         while(true) {
-
-
+            long beginTime = System.currentTimeMillis();
             update();
             render();
             draw();
+            long endTime = System.currentTimeMillis();
+            long sleepTime = STEPTIME - (endTime - beginTime);
+            sleepTime = (sleepTime > 0) ? sleepTime : 0;
+            try {
+                Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
