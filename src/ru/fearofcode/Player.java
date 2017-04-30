@@ -6,7 +6,9 @@ import java.awt.Graphics2D;
 /**
  * Created by maks on 24.04.2017.
  */
-public class Player {
+class Player {
+
+
     private double x;
     private double y;
     private int r;
