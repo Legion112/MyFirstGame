@@ -7,6 +7,9 @@ import javax.swing.*;
  */
 public class StartGame {
     public static void main(String[] args) {
-        GameFrame gameFrame = new GameFrame("Shooter 2D", new GamePanel());
+        System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
+        GamePanel gamePanel = new GamePanel();
+        GameFrame gameFrame = new GameFrame("Shooter 2D", gamePanel);
+        System.out.println("exit main");
     }
 }

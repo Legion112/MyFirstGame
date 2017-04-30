@@ -34,6 +34,8 @@ public class GamePanel extends JPanel implements Runnable{
 
     public GamePanel(){
         setPreferredSize(new Dimension(HEIGHT,WIDTH));
+
+        // The Class  is what we draw.
         image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
         graphics2D = (Graphics2D) image.getGraphics();
         graphics2D.setRenderingHints(new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON));
@@ -41,8 +43,7 @@ public class GamePanel extends JPanel implements Runnable{
         background = new Background();
         player = new Player();
 
-        addKeyListener(new Listener());
-
+        //addKeyListener(new Listener());
     }
     public void start(){
         threadGame = new Thread(this, "game");
