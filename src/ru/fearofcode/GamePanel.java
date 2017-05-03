@@ -17,7 +17,7 @@ import java.awt.RenderingHints;
 public class GamePanel extends JPanel implements Runnable{
     static int HEIGHT = 500;
     static int WIDTH = 500;
-    static int speadRoom = 60;
+    static int speadRoom = 30;
     final static long STEPTIME = 1_000 / speadRoom;
 
     Thread threadGame;
