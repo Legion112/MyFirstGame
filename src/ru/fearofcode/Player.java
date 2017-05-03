@@ -70,6 +70,7 @@ class Player {
         x += spdH;
         spdH = 0;
         spdV = 0;
+
     }
 
     public void draw(Graphics2D graphics2D){
