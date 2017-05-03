@@ -10,10 +10,6 @@ import java.security.Key;
  * Created by maks on 25.04.2017.
  */
 public class Listener implements KeyListener{
-    public static boolean keyUp = false;
-    public static boolean keyDown = false;
-    public static boolean keyLeft = false;
-    public static boolean keyRight = false;
 
 
     @Override
@@ -23,34 +19,12 @@ public class Listener implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_W){
-            keyUp = true;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_S){
-            keyDown = true;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_D) {
-            keyLeft = true;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_A) {
-            keyRight = true;
-        }
+
     }
 
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_W){
-            keyUp = false;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_S){
-            keyDown = false;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_D) {
-            keyLeft = false;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_A) {
-            keyRight = false;
-        }
+
     }
 }
