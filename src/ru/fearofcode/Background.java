@@ -16,6 +16,5 @@ public class Background {
     public void draw(Graphics2D graphics2D){
         graphics2D.setColor(color);
         graphics2D.fillRect(0,0,GamePanel.WIDTH, GamePanel.HEIGHT);
-        graphics2D.dispose();
     }
 }

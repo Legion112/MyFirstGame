@@ -17,12 +17,10 @@ import java.awt.RenderingHints;
 public class GamePanel extends JPanel implements Runnable{
     static int HEIGHT = 500;
     static int WIDTH = 500;
+    static int speadRoom = 30;
+    final static long STEPTIME = 1_000 / speadRoom;
 
     Thread threadGame;
-    private int FPS = 60;
-    private int timerFPS = 0;
-
-
 
     BufferedImage image;
     Graphics2D graphics2D;
@@ -30,8 +28,11 @@ public class GamePanel extends JPanel implements Runnable{
     Background background;
 
 
+
     public GamePanel(){
         setPreferredSize(new Dimension(HEIGHT,WIDTH));
+
+        // The Class  is what we draw.
         image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
         graphics2D = (Graphics2D) image.getGraphics();
         graphics2D.setRenderingHints(new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON));
@@ -45,19 +46,26 @@ public class GamePanel extends JPanel implements Runnable{
 
     @Override
     public void run(){
-
-
+        /*
+         This cycle do speed the game.
+         */
         while(true) {
-
-
+            long beginTime = System.currentTimeMillis();
             update();
             render();
             draw();
+            long endTime = System.currentTimeMillis();
+            long sleepTime = STEPTIME - (endTime - beginTime);
+            sleepTime = (sleepTime > 0) ? sleepTime : 0;
+            try {
+                Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     private void update(){
-
     }
 
     private void render(){
